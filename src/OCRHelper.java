@@ -12,16 +12,16 @@ import Util.ImgReadUtil;
 
 public class OCRHelper {  
      public static synchronized String recognizeText(File imageFile, String imageFormat) throws Exception { 
-    	 //tesseract所在目录
-            String tessPath="F:/Tesseract-OCR";  
+    	   //tesseract所在目录
+           String tessPath="F:/Tesseract-OCR";  
            File outputFile = new File(imageFile.getParentFile(), "output");  
            StringBuffer strB = new StringBuffer();  
            //用命令行形式调用tesseract
-          String[] cm=new String[]{tessPath+"/tesseract",imageFile.getAbsolutePath(),outputFile.getAbsolutePath(),"-l","chi_sim"};  
-        /*  System.out.println("执行的命令是    ");  
-          for(String str:cm){  
+           String[] cm=new String[]{tessPath+"/tesseract",imageFile.getAbsolutePath(),outputFile.getAbsolutePath(),"-l","chi_sim"};  
+           /*  System.out.println("执行的命令是    ");  
+           for(String str:cm){  
            System.out.print(str+" ");  
-          }  */
+           }  */
            Process pb = Runtime.getRuntime().exec(cm);  
            int w = pb.waitFor();  
            if (w == 0) {  
