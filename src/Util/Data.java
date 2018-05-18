@@ -2,13 +2,12 @@ package Util;
 public class Data {
     private String companyname;
     private String number;
-
-    
+ 
     public Data(){
         
     }
     
-    public Data(String number, String name) {
+    public Data(String number, String companyname) {
         super();
         this.companyname = companyname;
         this.number = number;
