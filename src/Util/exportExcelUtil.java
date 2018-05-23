@@ -1,4 +1,6 @@
 package Util;
+import helper.OCRHelper;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -99,9 +101,6 @@ public class exportExcelUtil {
         } catch (WriteException e){}
     }
 
-    
-
-
     /*public static void main(String [] args){
         String fileName = "test.xls";
 
@@ -109,4 +108,5 @@ public class exportExcelUtil {
         exportExcel(fileName, output);
         System.out.println("成功导出数据到Excel文件(" + fileName + ")了!!!");
     }*/
+	
 }

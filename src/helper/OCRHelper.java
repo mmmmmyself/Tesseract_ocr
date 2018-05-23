@@ -7,8 +7,9 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
 import ui.ocrUI;
-
 import Util.ImgCutUtil;
 import Util.ImgInverseUtil;
 import Util.ImgReadUtil;
@@ -21,13 +22,21 @@ public class OCRHelper {
      * @param imageFormat 图像格式 
      */  
      public static synchronized String recognizeText(File imageFile, String imageFormat) throws Exception { 
-    	   //tesseract所在目录
-           String tessPath="F:/Tesseract-OCR";  
+    	 /*  
+    	 //tesseract所在目录
+           String tessPath="D:/Program Files (x86)/Tesseract-OCR";  
            File outputFile = new File(imageFile.getParentFile(), "output");  
            StringBuffer strB = new StringBuffer();  
            //用命令行形式调用tesseract
            String[] cm=new String[]{tessPath+"/tesseract",imageFile.getAbsolutePath(),outputFile.getAbsolutePath(),"-l","chi_sim"};  
+         */
+    	 
+    	   File outputFile = new File(imageFile.getParentFile(), "output");  
+           StringBuffer strB = new StringBuffer();
+           ITesseract instance = new Tesseract(); 
+           instance.setLanguage("chi_sim");
            
+           String[] cm=new String[]{instance.doOCR(imageFile)};
            System.out.println("执行的命令是    ");  
            for(String str:cm){  
            System.out.print(str+" ");  

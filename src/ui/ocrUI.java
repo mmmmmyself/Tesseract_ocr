@@ -32,8 +32,8 @@ import helper.*;
 public class ocrUI {
 
 	private JFrame frmOcr;
-    private JTextField field1,field2;
-    private JComboBox cmb_selectlang,cmb_selectform;
+    private JTextField field1;
+    private JComboBox cmb_selectlang;
 	/**
 	 * Launch the application.
 	 */
@@ -107,7 +107,7 @@ public class ocrUI {
 		frmOcr.getContentPane().setBackground(Color.WHITE);
 		frmOcr.setResizable(false);
 		frmOcr.setBackground(SystemColor.activeCaption);
-		frmOcr.setTitle("ocr\u6587\u5B57\u8BC6\u522B");
+		frmOcr.setTitle("ocr\u6587\u5B57\u8BC6\u522B");//ocr文字识别
 		frmOcr.setFont(new Font("宋体", Font.PLAIN, 14));
 		frmOcr.setBounds(100, 100, 720, 616);
 		frmOcr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -117,6 +117,21 @@ public class ocrUI {
 		lblNewLabel.setIcon(new ImageIcon(ocrUI.class.getResource("/img/selectpic.PNG")));
 		lblNewLabel.setBounds(10, 10, 212, 33);
 		frmOcr.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(ocrUI.class.getResource("/img/selectlang.png")));
+		lblNewLabel_1.setBounds(10, 158, 212, 33);
+		frmOcr.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setIcon(new ImageIcon(ocrUI.class.getResource("/img/selectform.png")));
+		lblNewLabel_2.setBounds(10, 293, 212, 33);
+		frmOcr.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setIcon(new ImageIcon(ocrUI.class.getResource("/img/translate.png")));
+		lblNewLabel_3.setBounds(10, 435, 143, 33);
+		frmOcr.getContentPane().add(lblNewLabel_3);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 146, 694, 2);
@@ -129,7 +144,6 @@ public class ocrUI {
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(10, 423, 694, 2);
 		frmOcr.getContentPane().add(separator_2);
-		
 		
 		
 		//图片路径选择按钮
@@ -157,29 +171,14 @@ public class ocrUI {
 			  }
 		});
 
-		//图片选择文件
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon(ocrUI.class.getResource("/img/selectlang.png")));
-		lblNewLabel_1.setBounds(10, 158, 212, 33);
-		frmOcr.getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(ocrUI.class.getResource("/img/selectform.png")));
-		lblNewLabel_2.setBounds(10, 293, 212, 33);
-		frmOcr.getContentPane().add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("New label");
-		lblNewLabel_3.setIcon(new ImageIcon(ocrUI.class.getResource("/img/translate.png")));
-		lblNewLabel_3.setBounds(10, 435, 143, 33);
-		frmOcr.getContentPane().add(lblNewLabel_3);
-		
+		//选择图片语言
 		cmb_selectlang = new JComboBox();
 		field1 = new JTextField(20);
 		cmb_selectlang.setForeground(Color.BLACK);
 		cmb_selectlang.setBackground(Color.LIGHT_GRAY);
 		cmb_selectlang.setFont(new Font("宋体", Font.PLAIN, 16));
 		cmb_selectlang.addItem("\u7B80\u4F53\u4E2D\u6587");//简体中文
-		cmb_selectlang.addItem("\u5176\u4ED6\u8BED\u8A00");//其他语言
+		cmb_selectlang.addItem("\u82f1\u6587");//英文
 		cmb_selectlang.setBounds(73, 212, 137, 27);
 		frmOcr.getContentPane().add(cmb_selectlang);
 		frmOcr.getContentPane().add(field1);
@@ -196,6 +195,7 @@ public class ocrUI {
 			}
 		});
 		
+		//转换按钮
 		Button translate = new Button("\u5F00\u59CB\u8F6C\u6362");//开始转换
 		translate.setBackground(Color.LIGHT_GRAY);
 		translate.setFont(new Font("宋体", Font.PLAIN, 16));
@@ -205,11 +205,25 @@ public class ocrUI {
 		{
 			  public void mouseClicked(MouseEvent e)
 			  {
-				 // OCRHelper.recognizeText();
+				 //OCRHelper.recognizeText();
 			  }
 		});
 		
-		cmb_selectform = new JComboBox();
+		//导出到表按钮
+		Button importxls = new Button("\u5bfc\u51fa\u5230\u8868");//导出到表
+		importxls.setBackground(Color.LIGHT_GRAY);
+		importxls.setFont(new Font("宋体", Font.PLAIN, 16));
+		importxls.setBounds(73, 350, 114, 33);
+		frmOcr.getContentPane().add(importxls);
+		importxls.addMouseListener(new MouseAdapter()
+		{
+			  public void mouseClicked(MouseEvent e)
+			  {
+				  //exportExcel("test.xls",);
+			  }
+		});
+		
+		/*cmb_selectform = new JComboBox();
 		field2 = new JTextField(20);
 		cmb_selectform.addItem(".xls");
 		cmb_selectform.addItem("other");
@@ -229,6 +243,6 @@ public class ocrUI {
 					field2.setText(item);
 				}
 			}
-		});	
+		});*/
 	}
 }
