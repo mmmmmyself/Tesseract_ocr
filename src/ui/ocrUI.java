@@ -81,6 +81,12 @@ public class ocrUI {
            File[] imagefile = ImgReadUtil.myreader(filepath);
            for (File f1 : imagefile){
               String Abspath = filepath +f1.getName();
+              String reg=".*png.*";
+              if (!f1.getName().matches(reg)) 
+              {
+                  System.out.println("当前读取到的文件不是图片。");
+            	  break;
+              }
                //图片二值化
                //BufferedImage imgsrc = ImgInverseUtil.file2img(Abspath);
                //图片反色
@@ -91,7 +97,7 @@ public class ocrUI {
                //ImgCutUtil.cut(0, 0, 600, 75, Abspath, Abspath);  
                
                //输出识别结果
-              //System.out.println(Abspath);
+              System.out.println(Abspath);
               System.out.println(OCRHelper.recognizeText(new File(Abspath), "png"));  
              // exportExcelUtil.exportExcel("test.xls", OCRHelper.recognizeText(new File(Abspath), "png"));
 	    }}

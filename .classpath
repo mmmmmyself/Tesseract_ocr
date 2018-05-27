@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre(1)"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8"/>
 	<classpathentry kind="lib" path="C:/Users/Administrator/Desktop/大三下/swingx-1.6.1.jar.zip"/>
 	<classpathentry kind="lib" path="jxl-2.6.12.jar" sourcepath="C:/Users/Administrator/.m2/repository/net/sourceforge/jexcelapi/jxl/2.6.12/jxl-2.6.12-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.5.jar"/>
