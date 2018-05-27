@@ -35,7 +35,7 @@ public class OCRHelper {
            System.out.println(result);
            
 //         new File(outputFile.getAbsolutePath() + ".txt").delete();  
-           return strB.toString();  
+           return result;  
         }  
 
   

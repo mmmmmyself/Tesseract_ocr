@@ -17,6 +17,7 @@ import javax.swing.JSeparator;
 import java.awt.Button;
 import java.awt.event.*;
 import java.io.File;
+import java.util.regex.Pattern;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -24,6 +25,25 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import jdk.nashorn.internal.ir.Flags;
+
+import jxl.Cell;
+import jxl.CellView;
+import jxl.Hyperlink;
+import jxl.Image;
+import jxl.LabelCell;
+import jxl.Range;
+import jxl.SheetSettings;
+import jxl.format.CellFormat;
+import jxl.format.PageOrientation;
+import jxl.format.PaperSize;
+import jxl.write.WritableCell;
+import jxl.write.WritableHyperlink;
+import jxl.write.WritableImage;
+import jxl.write.WritableSheet;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 import Util.*;
 
@@ -52,14 +72,18 @@ public class ocrUI {
 
 	/**
 	 * 创建窗体
+	 * @throws Exception 
 	 */
-	public ocrUI() {
+	public ocrUI() throws Exception {
 		initialize();
+		ws = exportExcelUtil.createExcel("test1.xls");
 	}
 	
 	/**
 	 * 文件选择器
 	 */
+	   static WritableSheet ws;
+	   int flag=1;
 	public static String filepath;
 	public static void fileChooser() throws Exception {
 		JFileChooser chooser = new JFileChooser();
@@ -71,7 +95,6 @@ public class ocrUI {
 	    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 	    //打开选择器面板
 	    int returnVal = chooser.showOpenDialog(new JPanel());  
-	    
         //返回输出文件绝对路径 （这里缺省一个/，识别的时候的字符串需要再加一个/或者把/转化为\）
 	    if(returnVal == JFileChooser.APPROVE_OPTION) {
 	       System.out.println("你打开的文件所在目录是: " +
@@ -85,6 +108,7 @@ public class ocrUI {
               if (!f1.getName().matches(reg)) 
               {
                   System.out.println("当前读取到的文件不是图片。");
+                  exportExcelUtil.closeWrite();
             	  break;
               }
                //图片二值化
@@ -97,9 +121,13 @@ public class ocrUI {
                //ImgCutUtil.cut(0, 0, 600, 75, Abspath, Abspath);  
                
                //输出识别结果
-              System.out.println(Abspath);
-              System.out.println(OCRHelper.recognizeText(new File(Abspath), "png"));  
-             // exportExcelUtil.exportExcel("test.xls", OCRHelper.recognizeText(new File(Abspath), "png"));
+               System.out.println(Abspath);
+               String result = OCRHelper.recognizeText(new File(Abspath), "png");
+               result = result.replaceAll("\r|\n", ""); 
+               System.out.println(result);
+               //结果导入到表          
+               exportExcelUtil.exportExcel(result,ws);
+               //exportExcelUtil.exportExcel("test.xls", OCRHelper.recognizeText(new File(Abspath), "png"));
 	    }}
 	}
 	
