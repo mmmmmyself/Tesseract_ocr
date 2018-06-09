@@ -1,0 +1,18 @@
+.teachers {
+   border: thin solid black;
+}
+.teachersHeader {
+   text-align: center;
+   font-style: italic;
+   color: Snow;
+   background: Teal;
+}
+.name {
+   height: 25px;
+   text-align: center;
+   background: MediumTurquoise;
+}
+.subjects {
+   text-align: left;
+   background: PowderBlue;
+}

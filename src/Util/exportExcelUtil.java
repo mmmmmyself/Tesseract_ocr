@@ -100,7 +100,7 @@ public class exportExcelUtil {
 		ws.addCell(new Label(0, row + 1, p.getName()));
 		ws.addCell(new Label(1, row + 1, p.getNumber()));
 		row++;
-		System.out.println("成功导出数据到Excel文件了!!!");
+		//System.out.println("成功导出数据到Excel文件了!!!");
 		//wwb.write();
 		//wwb.close();
 
