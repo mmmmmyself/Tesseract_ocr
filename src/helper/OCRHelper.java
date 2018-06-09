@@ -27,7 +27,7 @@ public class OCRHelper {
            StringBuffer strB = new StringBuffer();
            ITesseract instance = new Tesseract(); 
          //instance.setDatapath("F:\\Tesseract-OCR\\tessdata");
-           instance.setLanguage("chi_sim");
+           instance.setLanguage("chi_sim"+"+"+"eng");
            
            String result=instance.doOCR(imageFile);
            
