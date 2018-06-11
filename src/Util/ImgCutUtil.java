@@ -25,7 +25,7 @@ public class ImgCutUtil {
   
     public static void main(String[] args) {  
        //≤‚ ‘”√
-       // ImgCutUtil.cut(30, 50, 300, 400, "d:/1.jpg", "d:/100.jpg");  
+       ImgCutUtil.cut(0, 0, 600, 75, "d:/1.png", "d:/1.png");  
   
     }  
   
@@ -40,7 +40,6 @@ public class ImgCutUtil {
      */  
     public static void cut(int x1, int y1, int width, int height,  
             String sourcePath, String descpath) {  
-  
         FileInputStream is = null;  
         ImageInputStream iis = null;  
         try {  
